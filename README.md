@@ -43,6 +43,34 @@
 
 ## 🏗️ Project Structure
 
+```
+Threat-Modeling-Tool/
+├── app.py                      ← Flask application entry point
+├── requirements.txt            ← Python dependencies
+│
+├── backend/
+│   ├── stride.py               ← STRIDE threat analysis engine
+│   ├── dread.py                ← DREAD risk scoring engine
+│   ├── dfd.py                  ← DFD graph creation (NetworkX)
+│   ├── database.py             ← SQLite database operations
+│   └── cve.py                  ← CVE data fetching (CIRCL API)
+│
+├── frontend/
+│   ├── routes.py               ← Flask API routes & blueprints
+│   ├── templates/
+│   │   └── index.html          ← Main web interface
+│   └── static/
+│       ├── styles.css          ← Dark cybersecurity theme
+│       └── script.js           ← Frontend logic & API calls
+│
+├── utils/
+│   ├── threat_utils.py         ← Threat identification & prioritization
+│   └── graph_utils.py          ← Graph analysis utilities
+│
+└── database/
+    └── threat_model.db         ← SQLite database (auto-created)
+```
+
 ---
 
 ## 🎯 STRIDE Methodology
@@ -202,6 +230,19 @@ print(f"Critical: {data['summary']['by_severity']['Critical']}")
 ---
 
 ## 🧪 Test Results
+
+```
+✅ All imports successful
+✅ Database initialized (SQLite)
+✅ DFD created: 6 components, 6 flows
+✅ DREAD scoring working (score: 8.76 for Web Server)
+✅ STRIDE analysis: 27 threats identified
+   Critical: 17 | High: 7 | Medium: 3 | Low: 0
+✅ Mitigation report: all 6 categories covered
+✅ Database save/retrieve working
+✅ Flask app starts successfully
+✅ All API endpoints responding correctly
+```
 
 ---
 
