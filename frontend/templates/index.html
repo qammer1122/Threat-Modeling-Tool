@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Threat Modeling Tool — STRIDE Analysis</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+
+<header>
+    <div class="logo">🛡️ Threat Modeling Tool</div>
+    <nav>
+        <ul>
+            <li><a href="#" onclick="showSection('home')" class="nav-link active">Home</a></li>
+            <li><a href="#" onclick="showSection('create-dfd')" class="nav-link">Create DFD</a></li>
+            <li><a href="#" onclick="showSection('analyze-threats')" class="nav-link">Analyze Threats</a></li>
+            <li><a href="#" onclick="showSection('reports')" class="nav-link">Reports</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+
+    <!-- HOME -->
+    <section id="home" class="section active">
+        <div class="hero">
+            <h1>🛡️ Threat Modeling Tool</h1>
+            <p>Identify, analyze and mitigate security threats using the <strong>STRIDE</strong> methodology and <strong>DREAD</strong> risk scoring.</p>
+            <div class="hero-buttons">
+                <button class="btn-primary" onclick="showSection('create-dfd')">➕ Create DFD</button>
+                <button class="btn-secondary" onclick="loadDefaultDFD()">🔍 Load Sample DFD</button>
+            </div>
+        </div>
+
+        <div class="info-cards">
+            <div class="card">
+                <h3>🎯 STRIDE Analysis</h3>
+                <p>Identify threats across 6 categories: Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, Elevation of Privilege.</p>
+            </div>
+            <div class="card">
+                <h3>📊 DREAD Scoring</h3>
+                <p>Quantify risk using Damage, Reproducibility, Exploitability, Affected Users, and Discoverability scores.</p>
+            </div>
+            <div class="card">
+                <h3>🔗 CVE Integration</h3>
+                <p>Automatically fetch related CVE data for identified threats from the CIRCL CVE database.</p>
+            </div>
+            <div class="card">
+                <h3>📋 Report Generation</h3>
+                <p>Generate detailed threat reports with mitigations, risk scores and remediation recommendations.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CREATE DFD -->
+    <section id="create-dfd" class="section">
+        <h2>Create Data Flow Diagram</h2>
+
+        <div class="dfd-builder">
+            <div class="component-form">
+                <h3>Add Component</h3>
+                <input type="text" id="comp-name" placeholder="Component Name" />
+                <select id="comp-type">
+                    <option value="process">Process</option>
+                    <option value="data_store">Data Store</option>
+                    <option value="external_entity">External Entity</option>
+                    <option value="data_flow">Data Flow</option>
+                </select>
+                <select id="comp-sensitivity">
+                    <option value="low">Low Sensitivity</option>
+                    <option value="medium">Medium Sensitivity</option>
+                    <option value="high">High Sensitivity</option>
+                    <option value="critical">Critical Sensitivity</option>
+                </select>
+                <button class="btn-primary" onclick="addComponent()">Add Component</button>
+            </div>
+
+            <div class="component-list">
+                <h3>Components Added</h3>
+                <ul id="components-list"></ul>
+            </div>
+        </div>
+
+        <div class="dfd-actions">
+            <button class="btn-primary" onclick="analyzeDFD()">🔍 Analyze Threats</button>
+            <button class="btn-secondary" onclick="clearComponents()">🗑️ Clear All</button>
+        </div>
+    </section>
+
+    <!-- ANALYZE THREATS -->
+    <section id="analyze-threats" class="section">
+        <h2>Threat Analysis Results</h2>
+
+        <div id="analysis-loading" class="loading" style="display:none;">
+            <p>⏳ Running STRIDE Analysis...</p>
+        </div>
+
+        <div id="summary-cards" class="summary-cards"></div>
+
+        <div id="threats-container" class="threats-container"></div>
+    </section>
+
+    <!-- REPORTS -->
+    <section id="reports" class="section">
+        <h2>Reports</h2>
+        <button class="btn-primary" onclick="loadReports()">📂 Load Saved Reports</button>
+        <div id="reports-container" class="reports-container"></div>
+    </section>
+
+</main>
+
+<footer>
+    <p>🛡️ Threat Modeling Tool — Built with STRIDE & DREAD Methodology</p>
+    <p>Developed by <strong>Qammer Abbas</strong> | MS Cybersecurity @ FAST-NUCES</p>
+</footer>
+
+<script src="/static/script.js"></script>
+</body>
+</html>
